@@ -55,18 +55,18 @@ public class Main {
         Entry entry = entryService.findById(id);
         model.addAttribute("entry", entry);
         model.addAttribute("comment", new Comment());
-        model.addAttribute("commentList", commentService.findAll());
+        model.addAttribute("commentList", commentService.findByEntry(entry));
         return "entry";
 
     }
 
 
-    @PostMapping("/entry/{id}")
-    public String addComment(@PathVariable Long id, @ModelAttribute Comment comment) {
-        Entry entry = entryService.findById(id);
+    @PostMapping("/entry/")
+    public String addComment( @ModelAttribute Comment comment, @RequestParam Long idEntry) {
+        Entry entry = entryService.findById(idEntry);
         comment.setEntry(entry);
         commentService.save(comment);
-        return "redirect:/entry/{id}";
+        return "redirect:/entry/" + idEntry;
     }
 
 }

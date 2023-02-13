@@ -60,7 +60,8 @@
 
 <!-- Comments Section-->
 <div class="d-flex justify-content-center" style="margin-top: 50px;">
-    <form action="#" th:action="@{/entry/{id}(id=${entry.id})}" th:object="${comment}" method="post" style="width: 500px;">
+    <form action="#" th:action="@{/entry/}" th:object="${comment}" method="post" style="width: 500px;">
+        <input type="hidden" name="idEntry" th:value="${entry.id}">
         <div style="width: 500px;">
             <h2 class="text-center">Add Comment</h2>
         </div>
@@ -84,6 +85,7 @@
         </li>
     </ul>
 </div>
+
 <br>
 <br>
 

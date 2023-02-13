@@ -1,6 +1,7 @@
 package com.example.Blog.services;
 
 import com.example.Blog.models.Comment;
+import com.example.Blog.models.Entry;
 import com.example.Blog.repositories.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,4 +28,8 @@ public class CommentService {
     public void delete(Comment comment){
         commentRepository.delete(comment);
     }
+
+    public List<Comment> findByEntry(Entry entry){
+        return commentRepository.findByEntry(entry);
+    };
 }
